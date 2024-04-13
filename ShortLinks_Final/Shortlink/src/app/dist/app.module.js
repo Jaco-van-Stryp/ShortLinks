@@ -15,13 +15,33 @@ var app_component_1 = require("./app.component");
 var jwt_interceptor_1 = require("./_interceptors/jwt.interceptor");
 var link_router_component_1 = require("./link-router/link-router.component");
 var home_component_1 = require("./home/home.component");
+var not_found_component_1 = require("./not-found/not-found.component");
+var register_component_1 = require("./register/register.component");
+var login_component_1 = require("./login/login.component");
+var animations_1 = require("@angular/platform-browser/animations");
+var forms_1 = require("@angular/forms");
+var ngx_toastr_1 = require("ngx-toastr");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent, link_router_component_1.LinkRouterComponent, home_component_1.HomeComponent],
-            imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpClientModule],
+            declarations: [
+                app_component_1.AppComponent,
+                link_router_component_1.LinkRouterComponent,
+                home_component_1.HomeComponent,
+                not_found_component_1.NotFoundComponent,
+                register_component_1.RegisterComponent,
+                login_component_1.LoginComponent,
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                app_routing_module_1.AppRoutingModule,
+                http_1.HttpClientModule,
+                animations_1.BrowserAnimationsModule,
+                ngx_toastr_1.ToastrModule.forRoot(),
+                forms_1.FormsModule,
+            ],
             providers: [
                 { provide: http_1.HTTP_INTERCEPTORS, useClass: jwt_interceptor_1.JwtInterceptor, multi: true },
             ],
