@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { LinkRouterComponent } from './link-router/link-router.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LinkRouterComponent, HomeComponent],
+  declarations: [AppComponent, LinkRouterComponent, HomeComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

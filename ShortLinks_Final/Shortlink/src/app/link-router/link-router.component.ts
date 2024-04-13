@@ -29,7 +29,7 @@ export class LinkRouterComponent {
         window.location.href = res.longURL;
       },
       error: (error: any) => {
-        this.navigator.navigate(['Home']);
+        this.navigator.navigateByUrl('NotFound');
       },
     });
   }
