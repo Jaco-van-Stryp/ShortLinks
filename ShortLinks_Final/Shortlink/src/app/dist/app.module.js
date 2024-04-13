@@ -13,12 +13,14 @@ var http_1 = require("@angular/common/http");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var jwt_interceptor_1 = require("./_interceptors/jwt.interceptor");
+var link_router_component_1 = require("./link-router/link-router.component");
+var home_component_1 = require("./home/home.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, link_router_component_1.LinkRouterComponent, home_component_1.HomeComponent],
             imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, http_1.HttpClientModule],
             providers: [
                 { provide: http_1.HTTP_INTERCEPTORS, useClass: jwt_interceptor_1.JwtInterceptor, multi: true },

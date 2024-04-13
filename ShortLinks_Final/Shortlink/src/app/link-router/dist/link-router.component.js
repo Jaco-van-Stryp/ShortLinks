@@ -9,25 +9,27 @@ exports.__esModule = true;
 exports.LinkRouterComponent = void 0;
 var core_1 = require("@angular/core");
 var LinkRouterComponent = /** @class */ (function () {
-    function LinkRouterComponent(URLService, router) {
+    function LinkRouterComponent(URLService, router, navigator) {
         this.URLService = URLService;
         this.router = router;
+        this.navigator = navigator;
     }
     LinkRouterComponent.prototype.ngOnInit = function () {
         console.log('Redirecting');
         this.RedirectURL();
     };
     LinkRouterComponent.prototype.RedirectURL = function () {
+        var _this = this;
         var shortURL = this.router.snapshot.paramMap.get('ShortURL');
         if (!shortURL)
             return;
         this.URLService.GetLongURL(shortURL).subscribe({
             next: function (res) {
                 console.log(res);
-                window.location.href = res.LongURL;
+                window.location.href = res.longURL;
             },
             error: function (error) {
-                console.log(error);
+                _this.navigator.navigate(['Home']);
             }
         });
     };

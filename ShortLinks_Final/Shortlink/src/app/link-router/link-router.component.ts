@@ -9,7 +9,11 @@ import { URL } from '../_interfaces/url';
   styleUrls: ['./link-router.component.scss'],
 })
 export class LinkRouterComponent {
-  constructor(private URLService: URLService, private router: ActivatedRoute) {}
+  constructor(
+    private URLService: URLService,
+    private router: ActivatedRoute,
+    private navigator: Router
+  ) {}
 
   ngOnInit(): void {
     console.log('Redirecting');
@@ -22,10 +26,10 @@ export class LinkRouterComponent {
     this.URLService.GetLongURL(shortURL).subscribe({
       next: (res: URL | any) => {
         console.log(res);
-        window.location.href = res.LongURL;
+        window.location.href = res.longURL;
       },
       error: (error: any) => {
-        console.log(error);
+        this.navigator.navigate(['Home']);
       },
     });
   }

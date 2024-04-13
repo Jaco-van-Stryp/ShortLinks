@@ -9,15 +9,19 @@ exports.__esModule = true;
 exports.AppRoutingModule = void 0;
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var app_component_1 = require("./app.component");
 var link_router_component_1 = require("./link-router/link-router.component");
+var home_component_1 = require("./home/home.component");
 var routes = [
     {
         path: '',
-        component: app_component_1.AppComponent
+        component: home_component_1.HomeComponent
     },
     {
-        path: 'ShortURL/:ShortURL',
+        path: 'Home',
+        component: home_component_1.HomeComponent
+    },
+    {
+        path: 's/:ShortURL',
         component: link_router_component_1.LinkRouterComponent
     },
 ];
