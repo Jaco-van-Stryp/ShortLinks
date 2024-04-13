@@ -11,6 +11,10 @@ export class LinkPageComponent {
 
   constructor(private URLService: URLService) {}
 
+  ngOnInit(): void {
+    this.loadURLS();
+  }
+
   loadURLS() {
     this.URLService.GetLinksForUser().subscribe({
       next: (res: URL[] | any) => {

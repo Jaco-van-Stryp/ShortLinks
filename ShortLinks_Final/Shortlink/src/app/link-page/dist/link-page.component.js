@@ -13,6 +13,9 @@ var LinkPageComponent = /** @class */ (function () {
         this.URLService = URLService;
         this.Links = [];
     }
+    LinkPageComponent.prototype.ngOnInit = function () {
+        this.loadURLS();
+    };
     LinkPageComponent.prototype.loadURLS = function () {
         var _this = this;
         this.URLService.GetLinksForUser().subscribe({

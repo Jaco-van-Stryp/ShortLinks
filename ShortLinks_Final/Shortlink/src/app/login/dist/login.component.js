@@ -9,9 +9,10 @@ exports.__esModule = true;
 exports.LoginComponent = void 0;
 var core_1 = require("@angular/core");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(AccountService, Toastr) {
+    function LoginComponent(AccountService, Toastr, router) {
         this.AccountService = AccountService;
         this.Toastr = Toastr;
+        this.router = router;
         this.User = {};
     }
     LoginComponent.prototype.Login = function (User) {
@@ -19,8 +20,7 @@ var LoginComponent = /** @class */ (function () {
         this.AccountService.Login(User).subscribe({
             next: function (res) {
                 _this.Toastr.success('Login Successful');
-                var currentUser = _this.AccountService.GetCurrentUser();
-                console.log(currentUser.token);
+                _this.router.navigateByUrl('/MyLinks');
             },
             error: function () {
                 _this.Toastr.error('Invalid Username or Password');

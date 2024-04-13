@@ -12,18 +12,23 @@ var router_1 = require("@angular/router");
 var link_router_component_1 = require("./link-router/link-router.component");
 var home_component_1 = require("./home/home.component");
 var not_found_component_1 = require("./not-found/not-found.component");
+var link_page_component_1 = require("./link-page/link-page.component");
 var routes = [
     {
         path: '',
         component: home_component_1.HomeComponent
     },
     {
+        path: 's/:ShortURL',
+        component: link_router_component_1.LinkRouterComponent
+    },
+    {
         path: 'NotFound',
         component: not_found_component_1.NotFoundComponent
     },
     {
-        path: 's/:ShortURL',
-        component: link_router_component_1.LinkRouterComponent
+        path: 'MyLinks',
+        component: link_page_component_1.LinkPageComponent
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
