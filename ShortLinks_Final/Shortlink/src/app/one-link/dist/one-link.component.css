@@ -4,7 +4,8 @@
 }
 
 .card-title a {
-  color: #007bff; /* Bootstrap primary color */
+  color: #007bff;
+  /* Bootstrap primary color */
   text-decoration: none;
 }
 
