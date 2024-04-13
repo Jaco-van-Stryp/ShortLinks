@@ -42,16 +42,17 @@ namespace ShortLinks_Final.Controllers
         public async Task<ActionResult> GetLongURL(string shortLink)
         {
             var link = await _context.Links.FirstOrDefaultAsync(l => l.ShortURL == shortLink);
-            if(link == null) return NotFound();
+            if (link == null) return NotFound();
             link.Interactions = link.Interactions + 1;
             _context.Links.Update(link);
             await _context.SaveChangesAsync();
 
-            return Ok(new URLDTO {
+            return Ok(new URLDTO
+            {
                 LongURL = link.LongURL,
                 ShortURL = link.ShortURL,
                 Interactions = 0
-                });
+            });
         }
 
         [Authorize]
@@ -63,26 +64,27 @@ namespace ShortLinks_Final.Controllers
             List<URLDTO> links = new List<URLDTO>();
             foreach (var link in user.Links)
             {
-                links.Add(new URLDTO {
-                LongURL = link.LongURL,
-                ShortURL = link.ShortURL,
-                Interactions = link.Interactions,
+                links.Add(new URLDTO
+                {
+                    LongURL = link.LongURL,
+                    ShortURL = link.ShortURL,
+                    Interactions = link.Interactions,
                 });
             }
             return Ok(links);
         }
 
         [Authorize]
-        [HttpDelete("DeleteShortURL")]
-        public async Task<ActionResult> DeleteURL(URLDTO url)
+        [HttpDelete("DeleteShortURL/{shortURL}")]
+        public async Task<ActionResult> DeleteURL(string shortURL)
         {
-           var user = await _context.User.Include(l => l.Links).FirstOrDefaultAsync(x => x.Username == User.GetUsername());
-           if(user == null) return Unauthorized("You are not a registered member");
-           var link = user.Links.SingleOrDefault(x => x.ShortURL == url.ShortURL);
-           if (link == null) return NotFound("The link does not exist");
-           user.Links.Remove(link);
-           await _context.SaveChangesAsync();
-           return Ok("Link Successfuly Removed");
+            var user = await _context.User.Include(l => l.Links).FirstOrDefaultAsync(x => x.Username == User.GetUsername());
+            if (user == null) return Unauthorized("You are not a registered member");
+            var link = user.Links.SingleOrDefault(x => x.ShortURL == shortURL);
+            if (link == null) return NotFound("The link does not exist");
+            user.Links.Remove(link);
+            await _context.SaveChangesAsync();
+            return Ok("Link Successfully Removed");
         }
     }
 }
