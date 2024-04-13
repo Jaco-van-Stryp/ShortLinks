@@ -19,6 +19,8 @@ var LoginComponent = /** @class */ (function () {
         this.AccountService.Login(User).subscribe({
             next: function (res) {
                 _this.Toastr.success('Login Successful');
+                var currentUser = _this.AccountService.GetCurrentUser();
+                console.log(currentUser.token);
             },
             error: function () {
                 _this.Toastr.error('Invalid Username or Password');

@@ -20,6 +20,8 @@ export class LoginComponent {
     this.AccountService.Login(User).subscribe({
       next: (res: any) => {
         this.Toastr.success('Login Successful');
+        var currentUser = this.AccountService.GetCurrentUser();
+        console.log(currentUser.token);
       },
       error: () => {
         this.Toastr.error('Invalid Username or Password');

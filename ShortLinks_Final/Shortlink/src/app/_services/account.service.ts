@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../_interfaces/user';
 import { Account } from '../_interfaces/account';
 import { BaseService } from './base.service';
-import { BehaviorSubject, map } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,7 @@ import { BehaviorSubject, map } from 'rxjs';
 export class AccountService {
   constructor(private HttpClient: HttpClient, private base: BaseService) {}
 
-  private currentUserSource = new BehaviorSubject<User | null>(null);
-  currentUser$ = this.currentUserSource.asObservable();
+  currentUser: User = {} as User;
 
   Login(account: Account) {
     return this.HttpClient.post<User>(
@@ -44,6 +43,10 @@ export class AccountService {
 
   setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
-    this.currentUserSource.next(user);
+    this.currentUser = user;
+  }
+
+  GetCurrentUser() {
+    return this.currentUser;
   }
 }

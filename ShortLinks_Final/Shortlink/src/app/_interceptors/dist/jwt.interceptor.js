@@ -8,21 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 exports.__esModule = true;
 exports.JwtInterceptor = void 0;
 var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
 var JwtInterceptor = /** @class */ (function () {
     function JwtInterceptor(accountService) {
         this.accountService = accountService;
     }
     JwtInterceptor.prototype.intercept = function (request, next) {
-        this.accountService.currentUser$.pipe(rxjs_1.take(1)).subscribe({
-            next: function (user) {
-                if (user) {
-                    request = request.clone({
-                        setHeaders: {
-                            Authorization: "Bearer " + user.Token
-                        }
-                    });
-                }
+        var user = this.accountService.GetCurrentUser();
+        request = request.clone({
+            setHeaders: {
+                Authorization: "Bearer " + user.token
             }
         });
         return next.handle(request);
