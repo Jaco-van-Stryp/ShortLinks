@@ -9,19 +9,24 @@ export class URLService {
   constructor(private HttpClient: HttpClient, private base: BaseService) {}
 
   CreateShortURL(url: URL) {
-    this.HttpClient.post(this.base.BaseURL + 'Links/CreateShortURL', url);
+    return this.HttpClient.post(
+      this.base.BaseURL + 'Links/CreateShortURL',
+      url
+    );
   }
 
   GetLongURL(shortURL: string) {
-    this.HttpClient.get(this.base.BaseURL + 'Links/GetLongURL/' + shortURL);
+    return this.HttpClient.get(
+      this.base.BaseURL + 'Links/GetLongURL/' + shortURL
+    );
   }
 
   GetLinksForUser() {
-    this.HttpClient.get(this.base.BaseURL + 'Links/GetLinksForUser');
+    return this.HttpClient.get(this.base.BaseURL + 'Links/GetLinksForUser');
   }
 
   DeleteShortURL(shortURL: string) {
-    this.HttpClient.delete(
+    return this.HttpClient.delete(
       this.base.BaseURL + 'Links/DeleteShortURL/' + shortURL
     );
   }

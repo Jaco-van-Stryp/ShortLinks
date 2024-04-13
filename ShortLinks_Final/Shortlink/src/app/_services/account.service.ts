@@ -15,7 +15,10 @@ export class AccountService {
   currentUser$ = this.currentUserSource.asObservable();
 
   Login(account: Account) {
-    this.HttpClient.post<User>(this.base.BaseURL + 'User/Login', account).pipe(
+    return this.HttpClient.post<User>(
+      this.base.BaseURL + 'User/Login',
+      account
+    ).pipe(
       map((res: User) => {
         const user = res;
         if (user) {
@@ -26,7 +29,7 @@ export class AccountService {
   }
 
   Register(account: Account) {
-    this.HttpClient.post<User>(
+    return this.HttpClient.post<User>(
       this.base.BaseURL + 'User/Register',
       account
     ).pipe(
