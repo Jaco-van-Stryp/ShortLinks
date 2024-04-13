@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { LinkPageComponent } from './link-page/link-page.component';
+import { OneLinkComponent } from './one-link/one-link.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
     NotFoundComponent,
     RegisterComponent,
     LoginComponent,
+    LinkPageComponent,
+    OneLinkComponent,
   ],
   imports: [
     BrowserModule,
