@@ -13,20 +13,35 @@ export class GenerateURLComponent {
   Url: linkMod = {} as linkMod;
   @Output() linkOut = new EventEmitter<linkMod>();
 
-  constructor(private URLService: URLService, private toastr: ToastrService, private accountService: AccountService) {}
+  constructor(
+    private URLService: URLService,
+    private toastr: ToastrService,
+    private accountService: AccountService
+  ) {}
 
   saveURL(link: linkMod) {
-    this.URLService.CreateShortURL(link).subscribe({
-      next: (res: any) => {
-        this.toastr.success('Your URL has been created Successfully.');
-        link.interactions = 0;
-        this.linkOut.emit(link);
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.toastr.error(error.error);
-      },
-    });
+    if (
+      link.longURL == null ||
+      link.shortURL == null ||
+      link.longURL == '' ||
+      link.shortURL == ''
+    ) {
+      this.toastr.error(
+        'Please make sure to enter a Long Url, and Shortened Reference Url before generating.'
+      );
+    } else {
+      this.URLService.CreateShortURL(link).subscribe({
+        next: (res: any) => {
+          this.toastr.success('Your URL has been created Successfully.');
+          link.interactions = 0;
+          this.linkOut.emit(link);
+        },
+        error: (error: any) => {
+          console.log(error);
+          this.toastr.error(error.error);
+        },
+      });
+    }
   }
 
   logout() {
