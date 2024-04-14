@@ -1,16 +1,17 @@
 <div class="container-fluid">
   <div class="row">
-    <h1>Your URLs</h1>
+    <h1>Generate New URL</h1>
     <hr />
     <div class="row">
       <app-generate-url (linkOut)="addLink($event)"></app-generate-url>
     </div>
-    <div class="row mt-3" *ngFor="let Link of Links">
-      <div class="col-4"></div>
-      <div class="col-4">
-        <app-one-link class="w-25" [LinkData]="Link"></app-one-link>
-      </div>
-      <div class="col-4"></div>
+    <h2 class="mt-2">Your Existing URLs</h2>
+    <div class="row mt-3">
+      <app-one-link
+        *ngFor="let Link of Links"
+        class="col-6"
+        [LinkData]="Link"
+      ></app-one-link>
     </div>
   </div>
 </div>
