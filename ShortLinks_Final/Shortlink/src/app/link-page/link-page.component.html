@@ -11,6 +11,7 @@
         *ngFor="let Link of Links"
         class="col-6"
         [LinkData]="Link"
+        (DeletedLink)="removeLink($event)"
       ></app-one-link>
     </div>
   </div>

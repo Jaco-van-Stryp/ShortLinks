@@ -84,7 +84,7 @@ namespace ShortLinks_Final.Controllers
             if (link == null) return NotFound("The link does not exist");
             user.Links.Remove(link);
             await _context.SaveChangesAsync();
-            return Ok("Link Successfully Removed");
+            return Ok();
         }
     }
 }

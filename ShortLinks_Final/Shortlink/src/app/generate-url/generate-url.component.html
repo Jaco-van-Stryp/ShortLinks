@@ -6,12 +6,15 @@
         <div class="card-body">
           <div class="mb-3">
             <label for="username" class="form-label">Long URL</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter Long URL"
-              [(ngModel)]="Url.longURL"
-            />
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">https://</span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Long URL"
+                [(ngModel)]="Url.longURL"
+              />
+            </div>
           </div>
           <div class="mb-3">
             <label for="short URL" class="form-label"

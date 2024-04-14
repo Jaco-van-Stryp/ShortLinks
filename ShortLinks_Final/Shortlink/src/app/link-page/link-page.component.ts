@@ -26,4 +26,9 @@ export class LinkPageComponent {
   addLink(newLink: linkMod) {
     this.Links.push(newLink);
   }
+
+  removeLink(removeLink: linkMod) {
+    var index = this.Links.indexOf(removeLink);
+    this.Links.splice(index);
+  }
 }

@@ -15,9 +15,11 @@ export class GenerateURLComponent {
   constructor(private URLService: URLService, private toastr: ToastrService) {}
 
   saveURL(link: linkMod) {
+    link.longURL = 'https://' + link.longURL;
     this.URLService.CreateShortURL(link).subscribe({
       next: (res: any) => {
         this.toastr.success('Your URL has been created Successfully.');
+        link.interactions = 0;
         this.linkOut.emit(link);
       },
       error: (error: any) => {
