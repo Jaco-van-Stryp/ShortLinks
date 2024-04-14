@@ -2,6 +2,7 @@ import { URLService } from './../_services/url.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { linkMod } from '../_interfaces/linkMod';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-generate-url',
@@ -12,7 +13,7 @@ export class GenerateURLComponent {
   Url: linkMod = {} as linkMod;
   @Output() linkOut = new EventEmitter<linkMod>();
 
-  constructor(private URLService: URLService, private toastr: ToastrService) {}
+  constructor(private URLService: URLService, private toastr: ToastrService, private accountService: AccountService) {}
 
   saveURL(link: linkMod) {
     this.URLService.CreateShortURL(link).subscribe({
@@ -26,5 +27,9 @@ export class GenerateURLComponent {
         this.toastr.error(error.error);
       },
     });
+  }
+
+  logout() {
+    this.accountService.logout();
   }
 }

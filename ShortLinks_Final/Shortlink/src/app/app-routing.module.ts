@@ -10,6 +10,10 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
+    {
+    path: 'Home',
+    component: HomeComponent,
+  },
   {
     path: 's/:ShortURL',
     component: LinkRouterComponent,

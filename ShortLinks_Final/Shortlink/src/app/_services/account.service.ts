@@ -4,12 +4,13 @@ import { User } from '../_interfaces/user';
 import { Account } from '../_interfaces/account';
 import { BaseService } from './base.service';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  constructor(private HttpClient: HttpClient, private base: BaseService) {}
+  constructor(private HttpClient: HttpClient, private base: BaseService, private router: Router) {}
 
   Login(account: Account) {
     return this.HttpClient.post<User>(
@@ -43,6 +44,11 @@ export class AccountService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl("Home");
+}
+
   GetCurrentUser() {
     const local = localStorage.getItem('user');
     if (local !== null) {
@@ -53,6 +59,8 @@ export class AccountService {
         console.error('Error parsing user data:', e);
         return null; // or throw an error, depending on your error handling strategy
       }
+    } else {
+      this.logout();
     }
     return null;
   }
