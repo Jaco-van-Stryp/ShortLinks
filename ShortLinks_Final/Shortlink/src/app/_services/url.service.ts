@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-
+import { linkMod } from '../_interfaces/linkMod';
 @Injectable({
   providedIn: 'root',
 })
 export class URLService {
   constructor(private HttpClient: HttpClient, private base: BaseService) {}
 
-  CreateShortURL(url: URL) {
+  CreateShortURL(url: linkMod) {
     return this.HttpClient.post(
       this.base.BaseURL + 'Links/CreateShortURL',
       url

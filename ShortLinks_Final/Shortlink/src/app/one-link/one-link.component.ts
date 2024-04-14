@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { URL } from '../_interfaces/url';
+import { linkMod } from '../_interfaces/linkMod';
 
 @Component({
   selector: 'app-one-link',
@@ -7,5 +7,5 @@ import { URL } from '../_interfaces/url';
   styleUrls: ['./one-link.component.scss'],
 })
 export class OneLinkComponent {
-  @Input() LinkData: URL = {} as URL;
+  @Input() LinkData: linkMod = {} as linkMod;
 }

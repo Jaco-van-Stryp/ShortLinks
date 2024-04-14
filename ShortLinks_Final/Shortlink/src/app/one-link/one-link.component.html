@@ -1,13 +1,20 @@
 <div class="card mb-4 shadow-sm">
   <div class="card-body">
     <h5 class="card-title">
-      Short URL: <a href="#" class="card-link">{{ LinkData.shortURL }}</a>
+      Short URL:
+      <a
+        href="https://hubby.business/s/{{ LinkData.shortURL }}"
+        class="card-link"
+        >https://hubby.business/s/{{ LinkData.shortURL }}</a
+      >
     </h5>
-    <h6 class="card-subtitle mb-2 text-muted">Long URL:</h6>
-    <p class="card-text">{{ LinkData.longURL }}</p>
+    <h6 class="card-subtitle mb-2 text-muted">
+      Long URL: <a href="{{ LinkData.longURL }}">{{ LinkData.longURL }}</a>
+    </h6>
     <p class="card-text">
       <small class="text-muted"
-        >You've Redirected people {{ LinkData.interactions }} so far.</small
+        >You've Redirected people {{ LinkData.interactions }} times so
+        far.</small
       >
     </p>
   </div>

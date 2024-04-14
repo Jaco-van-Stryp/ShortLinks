@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { URLService } from './../_services/url.service';
 import { Component } from '@angular/core';
-import { URL } from '../_interfaces/url';
+import { linkMod } from '../_interfaces/linkMod';
 
 @Component({
   selector: 'app-link-router',
@@ -24,7 +24,7 @@ export class LinkRouterComponent {
     const shortURL = this.router.snapshot.paramMap.get('ShortURL');
     if (!shortURL) return;
     this.URLService.GetLongURL(shortURL).subscribe({
-      next: (res: URL | any) => {
+      next: (res: linkMod | any) => {
         console.log(res);
         window.location.href = res.longURL;
       },

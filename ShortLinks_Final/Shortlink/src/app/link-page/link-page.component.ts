@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { URL } from '../_interfaces/url';
+import { linkMod } from '../_interfaces/linkMod';
 import { URLService } from '../_services/url.service';
 @Component({
   selector: 'app-link-page',
@@ -7,7 +7,7 @@ import { URLService } from '../_services/url.service';
   styleUrls: ['./link-page.component.scss'],
 })
 export class LinkPageComponent {
-  Links: URL[] = [];
+  Links: linkMod[] = [];
 
   constructor(private URLService: URLService) {}
 
@@ -17,7 +17,7 @@ export class LinkPageComponent {
 
   loadURLS() {
     this.URLService.GetLinksForUser().subscribe({
-      next: (res: URL[] | any) => {
+      next: (res: linkMod[] | any) => {
         this.Links = res;
       },
     });

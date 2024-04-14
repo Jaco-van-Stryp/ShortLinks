@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { LinkPageComponent } from './link-page/link-page.component';
 import { OneLinkComponent } from './one-link/one-link.component';
+import { GenerateURLComponent } from './generate-url/generate-url.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { OneLinkComponent } from './one-link/one-link.component';
     LoginComponent,
     LinkPageComponent,
     OneLinkComponent,
+    GenerateURLComponent,
   ],
   imports: [
     BrowserModule,
