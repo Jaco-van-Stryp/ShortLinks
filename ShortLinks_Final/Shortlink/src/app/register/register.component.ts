@@ -21,7 +21,7 @@ export class RegisterComponent {
       next: (res: any) => {
         this.Toastr.success('Registration Successful');
         var currentUser = this.AccountService.GetCurrentUser();
-        console.log(currentUser.token);
+        console.log(currentUser?.token);
       },
       error: () => {
         this.Toastr.error('User Already Exists');

@@ -11,8 +11,6 @@ import { map } from 'rxjs';
 export class AccountService {
   constructor(private HttpClient: HttpClient, private base: BaseService) {}
 
-  currentUser: User = {} as User;
-
   Login(account: Account) {
     return this.HttpClient.post<User>(
       this.base.BaseURL + 'User/Login',
@@ -43,10 +41,19 @@ export class AccountService {
 
   setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
-    this.currentUser = user;
   }
 
   GetCurrentUser() {
-    return this.currentUser;
+    const local = localStorage.getItem('user');
+    if (local !== null) {
+      try {
+        const user: User = JSON.parse(local);
+        return user;
+      } catch (e) {
+        console.error('Error parsing user data:', e);
+        return null; // or throw an error, depending on your error handling strategy
+      }
+    }
+    return null;
   }
 }

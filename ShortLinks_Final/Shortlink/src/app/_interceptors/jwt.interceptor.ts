@@ -17,10 +17,10 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const user: User = this.accountService.GetCurrentUser();
+    const user: User | null = this.accountService.GetCurrentUser();
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${user?.token}`,
       },
     });
     return next.handle(request);

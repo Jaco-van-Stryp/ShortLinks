@@ -20,7 +20,7 @@ var RegisterComponent = /** @class */ (function () {
             next: function (res) {
                 _this.Toastr.success('Registration Successful');
                 var currentUser = _this.AccountService.GetCurrentUser();
-                console.log(currentUser.token);
+                console.log(currentUser === null || currentUser === void 0 ? void 0 : currentUser.token);
             },
             error: function () {
                 _this.Toastr.error('User Already Exists');

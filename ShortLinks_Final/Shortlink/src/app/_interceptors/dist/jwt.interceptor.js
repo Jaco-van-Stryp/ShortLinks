@@ -16,7 +16,7 @@ var JwtInterceptor = /** @class */ (function () {
         var user = this.accountService.GetCurrentUser();
         request = request.clone({
             setHeaders: {
-                Authorization: "Bearer " + user.token
+                Authorization: "Bearer " + (user === null || user === void 0 ? void 0 : user.token)
             }
         });
         return next.handle(request);

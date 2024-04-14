@@ -13,7 +13,6 @@ var AccountService = /** @class */ (function () {
     function AccountService(HttpClient, base) {
         this.HttpClient = HttpClient;
         this.base = base;
-        this.currentUser = {};
     }
     AccountService.prototype.Login = function (account) {
         var _this = this;
@@ -35,10 +34,20 @@ var AccountService = /** @class */ (function () {
     };
     AccountService.prototype.setCurrentUser = function (user) {
         localStorage.setItem('user', JSON.stringify(user));
-        this.currentUser = user;
     };
     AccountService.prototype.GetCurrentUser = function () {
-        return this.currentUser;
+        var local = localStorage.getItem('user');
+        if (local !== null) {
+            try {
+                var user = JSON.parse(local);
+                return user;
+            }
+            catch (e) {
+                console.error('Error parsing user data:', e);
+                return null; // or throw an error, depending on your error handling strategy
+            }
+        }
+        return null;
     };
     AccountService = __decorate([
         core_1.Injectable({
