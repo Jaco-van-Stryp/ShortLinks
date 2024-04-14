@@ -6,35 +6,33 @@
           Login to Hubby Link Shortener
         </div>
         <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input
-                type="text"
-                id="username"
-                class="form-control"
-                placeholder="Enter username"
-                [(ngModel)]="User.Username"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input
-                type="password"
-                id="password"
-                class="form-control"
-                placeholder="Enter password"
-                [(ngModel)]="User.Password"
-              />
-            </div>
-            <button
-              type="submit"
-              (click)="Login(User)"
-              class="btn btn-primary w-100"
-            >
-              Login
-            </button>
-          </form>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Enter username"
+              [(ngModel)]="User.Username"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              placeholder="Enter password"
+              [(ngModel)]="User.Password"
+            />
+          </div>
+          <button
+            type="submit"
+            (click)="Login(User)"
+            class="btn btn-primary w-100"
+          >
+            Login
+          </button>
           <div class="mt-4 text-center">
             Don't have an account?
             <br />
