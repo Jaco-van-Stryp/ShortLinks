@@ -3,7 +3,7 @@
     <h1>Your URLs</h1>
     <hr />
     <div class="row">
-      <app-generate-url></app-generate-url>
+      <app-generate-url (linkOut)="addLink($event)"></app-generate-url>
     </div>
     <div class="row mt-3" *ngFor="let Link of Links">
       <div class="col-4"></div>

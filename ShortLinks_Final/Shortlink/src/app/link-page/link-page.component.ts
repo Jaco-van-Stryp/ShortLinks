@@ -22,4 +22,8 @@ export class LinkPageComponent {
       },
     });
   }
+
+  addLink(newLink: linkMod) {
+    this.Links.push(newLink);
+  }
 }

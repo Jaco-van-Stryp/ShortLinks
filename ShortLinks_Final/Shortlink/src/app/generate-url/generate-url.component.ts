@@ -1,5 +1,5 @@
 import { URLService } from './../_services/url.service';
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { linkMod } from '../_interfaces/linkMod';
 import { ToastrService } from 'ngx-toastr';
 
@@ -9,7 +9,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./generate-url.component.scss'],
 })
 export class GenerateURLComponent {
-  @Output() Url: linkMod = {} as linkMod;
+  Url: linkMod = {} as linkMod;
+  @Output() linkOut = new EventEmitter<linkMod>();
 
   constructor(private URLService: URLService, private toastr: ToastrService) {}
 
@@ -17,6 +18,7 @@ export class GenerateURLComponent {
     this.URLService.CreateShortURL(link).subscribe({
       next: (res: any) => {
         this.toastr.success('Your URL has been created Successfully.');
+        this.linkOut.emit(link);
       },
       error: (error: any) => {
         console.log(error);
