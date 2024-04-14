@@ -1,11 +1,106 @@
 <div class="container-fluid">
-  <div class="row">
-    <h1>Hubby Link Shortner</h1>
-  </div>
-  <div class="row">
-    <app-login></app-login>
-  </div>
-  <div class="row">
-    <app-register></app-register>
-  </div>
+  <!-- Hero Section with Title and Tagline -->
+  <header class="row">
+    <div class="col text-center mt-5">
+      <h1>Hubby Link Shortener</h1>
+      <p class="tagline">
+        Effortlessly shorten your URLs to enhance marketing efforts and track
+        data with precision.
+      </p>
+    </div>
+  </header>
+
+  <!-- Authentication Buttons -->
+  <section class="row">
+    <div class="col text-center my-3">
+      <button routerLink="/Login" class="btn btn-primary btn-lg">Login</button>
+      <button routerLink="/Register" class="btn btn-success btn-lg ms-2">
+        Register
+      </button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="row text-center my-5">
+    <div class="col-md-4">
+      <i class="fa fa-chart-line fa-3x"></i>
+      <h3>Track Engagement</h3>
+      <p>
+        Gain insights into user behavior with comprehensive analytics.
+        Understand which links capture attention and why.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-link fa-3x"></i>
+      <h3>Simplify Sharing</h3>
+      <p>
+        Streamline your digital content sharing with our easy-to-use, secure URL
+        shortener that optimizes your space and time.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-user-shield fa-3x"></i>
+      <h3>Secure</h3>
+      <p>
+        Our platform ensures that all your links are encrypted with the latest
+        security protocols, protecting your information and your users.
+      </p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="row">
+    <div class="col text-center my-5">
+      <h2>What Our Users Say</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">
+              "Hubby has transformed how we track our marketing campaigns. The
+              analytics tools are fantastic for real-time data!"
+            </p>
+            <footer class="blockquote-footer">
+              John Carter,
+              <cite title="Source Title">Digital Marketer, Acme Inc.</cite>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">
+              "I love how easy it is to share links with Hubby. It's made our
+              social media posts much cleaner and more effective."
+            </p>
+            <footer class="blockquote-footer">
+              Sarah Lee,
+              <cite title="Source Title">Social Media Manager, BloomTech</cite>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p class="mb-0">
+              "The security features give us peace of mind. We handle sensitive
+              information, and Hubby ensures it stays secure."
+            </p>
+            <footer class="blockquote-footer">
+              Alice Johnson,
+              <cite title="Source Title">IT Security Officer, SecurePath</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white text-center p-3 mt-5">
+    <p>© 2024 Hubby Link Shortener. All rights reserved.</p>
+    <p>
+      Follow us on
+      <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+    </p>
+  </footer>
 </div>
