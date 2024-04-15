@@ -1,8 +1,13 @@
 /* Container and General Styling */
 .container {
-  min-height: 100vh; /* Full screen height */
+  max-height: 100vh; /* Full screen height */
   align-items: center; /* Centers the card vertically */
   justify-content: center; /* Centers the card horizontally */
+  text-align: center;
+}
+
+.login-box {
+  padding-top: 20vh;
 }
 
 /* Card and Background */
