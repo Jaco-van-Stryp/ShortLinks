@@ -21,7 +21,11 @@
         You've redirected people {{ LinkData.interactions }} times so far.
       </small>
     </p>
-    <button class="btn btn-outline-danger" (click)="DeleteURL(LinkData)">
+    <button
+      [disabled]="Busy"
+      class="btn btn-outline-danger"
+      (click)="DeleteURL()"
+    >
       Delete URL
     </button>
   </div>

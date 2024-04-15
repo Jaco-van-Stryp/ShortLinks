@@ -8,11 +8,11 @@
     ></app-generate-url>
   </div>
 
-  <div class="existing-urls-section">
-    <h2 class="section-title">Your Existing URLs</h2>
+  <div class="generate-url-section mb-5">
+    <h2 class="section-title">You have {{ Links.length }} Short URLs</h2>
     <div class="row mt-3">
       <app-one-link
-        *ngFor="let Link of Links; trackBy: trackLink"
+        *ngFor="let Link of Links"
         class="col-md-3 col-sm-6 mb-4"
         [LinkData]="Link"
         (DeletedLink)="removeLink($event)"

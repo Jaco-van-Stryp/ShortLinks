@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { linkMod } from '../_interfaces/linkMod';
 import { URLService } from '../_services/url.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-link-page',
   templateUrl: './link-page.component.html',
@@ -8,7 +9,7 @@ import { URLService } from '../_services/url.service';
 })
 export class LinkPageComponent {
   Links: linkMod[] = [];
-  constructor(private URLService: URLService) {}
+  constructor(private URLService: URLService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.loadURLS();
@@ -23,15 +24,27 @@ export class LinkPageComponent {
   }
 
   addLink(newLink: linkMod) {
-    this.Links.push(newLink);
+    console.log(newLink);
+    var L: linkMod = {
+      longURL: newLink.longURL,
+      shortURL: newLink.shortURL,
+      interactions: 0,
+    };
+    this.Links.push(L);
   }
 
   removeLink(removeLink: linkMod) {
     var index = this.Links.indexOf(removeLink);
-    this.Links.splice(index);
-  }
-
-  trackLink(index: any, link: any) {
-    return link ? link.id : undefined; // Use a unique identifier for tracking
+    this.Links.splice(index, 1);
+    this.URLService.DeleteShortURL(removeLink.shortURL).subscribe({
+      next: (res) => {
+        this.toastr.success(
+          'Short URL has been successfully Deleted and Disabled for other users.'
+        );
+      },
+      error: (error) => {
+        this.toastr.error('Something went wrong whilst deleting your URL');
+      },
+    });
   }
 }

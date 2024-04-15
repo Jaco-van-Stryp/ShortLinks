@@ -49,6 +49,7 @@ namespace ShortLinks_Final.Controllers
 
             return Ok(new URLDTO
             {
+                ID = link.Id,
                 LongURL = link.LongURL,
                 ShortURL = link.ShortURL,
                 Interactions = 0
@@ -66,6 +67,7 @@ namespace ShortLinks_Final.Controllers
             {
                 links.Add(new URLDTO
                 {
+                    ID = link.Id,
                     LongURL = link.LongURL,
                     ShortURL = link.ShortURL,
                     Interactions = link.Interactions,

@@ -10,8 +10,7 @@ import { AccountService } from '../_services/account.service';
   styleUrls: ['./generate-url.component.scss'],
 })
 export class GenerateURLComponent {
-  Url: linkMod = {} as linkMod;
-  btnEnabled: boolean = false;
+  DataURL: linkMod = {} as linkMod;
   @Output() linkOut = new EventEmitter<linkMod>();
 
   constructor(
@@ -21,7 +20,6 @@ export class GenerateURLComponent {
   ) {}
 
   saveURL(link: linkMod) {
-    this.btnEnabled = true;
     if (
       link.longURL == null ||
       link.shortURL == null ||
@@ -32,14 +30,11 @@ export class GenerateURLComponent {
       this.toastr.error(
         'Please make sure to enter a Long Url, and Shortened Reference Url before generating. The maximum length for short URLs are 250 Characters'
       );
-      this.btnEnabled = false;
     } else {
       this.URLService.CreateShortURL(link).subscribe({
         next: (res: any) => {
           this.toastr.success('Your URL has been created Successfully.');
-          link.interactions = 0;
           this.linkOut.emit(link);
-          this.btnEnabled = false;
         },
         error: (error: any) => {
           if (error.error == 'Short URL Already Exists') {
@@ -51,7 +46,6 @@ export class GenerateURLComponent {
               'Something went wrong while generating your URL. Please try again later.'
             );
           }
-          this.btnEnabled = false;
         },
       });
     }

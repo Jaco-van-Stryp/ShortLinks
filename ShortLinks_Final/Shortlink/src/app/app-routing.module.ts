@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'NotFound',
-    component: NotFoundComponent,
+    component: HomeComponent,
   },
   {
     path: 'MyLinks',

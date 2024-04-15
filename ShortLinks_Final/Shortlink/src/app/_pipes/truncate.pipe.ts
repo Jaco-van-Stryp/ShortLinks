@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TruncatePipe implements PipeTransform {
   transform(
     value: string,
-    limit: number = 40,
+    limit: number = 35,
     completeWords: boolean = false,
     ellipsis: string = '...'
   ): string {

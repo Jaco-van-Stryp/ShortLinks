@@ -11,6 +11,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class OneLinkComponent {
   @Input() LinkData: linkMod = {} as linkMod;
+  @Input() Busy: boolean | undefined;
+
   @Output() DeletedLink = new EventEmitter<linkMod>();
   VisibleSL: string = '';
   constructor(private urlService: URLService, private toastr: ToastrService) {}
@@ -19,19 +21,7 @@ export class OneLinkComponent {
     this.VisibleSL = 'https://hubby.business/s/' + this.LinkData.shortURL;
   }
 
-  DeleteURL(Url: linkMod) {
-    this.urlService.DeleteShortURL(Url.shortURL).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.toastr.success(
-          'Short URL has been successfully Deleted and Disabled for other users.'
-        );
-        this.DeletedLink.emit(Url);
-      },
-      error: (error) => {
-        console.log(error);
-        this.toastr.error('Something went wrong whilst deleting your URL');
-      },
-    });
+  DeleteURL() {
+    this.DeletedLink.emit(this.LinkData);
   }
 }

@@ -11,7 +11,7 @@
                 type="text"
                 class="form-control"
                 placeholder="Enter Long URL"
-                [(ngModel)]="Url.longURL"
+                [(ngModel)]="DataURL.longURL"
               />
             </div>
           </div>
@@ -27,14 +27,10 @@
                 type="text"
                 class="form-control"
                 placeholder="Short URL Reference"
-                [(ngModel)]="Url.shortURL"
+                [(ngModel)]="DataURL.shortURL"
               />
             </div>
-            <button
-              [disabled]="btnEnabled"
-              (click)="saveURL(Url)"
-              class="btn btn-primary"
-            >
+            <button (click)="saveURL(DataURL)" class="btn btn-primary">
               Create Short URL
             </button>
             <button (click)="logout()" class="btn btn-danger ms-2">
