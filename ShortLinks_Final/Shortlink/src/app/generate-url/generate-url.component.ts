@@ -11,6 +11,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class GenerateURLComponent {
   Url: linkMod = {} as linkMod;
+  btnEnabled: boolean = false;
   @Output() linkOut = new EventEmitter<linkMod>();
 
   constructor(
@@ -20,25 +21,37 @@ export class GenerateURLComponent {
   ) {}
 
   saveURL(link: linkMod) {
+    this.btnEnabled = true;
     if (
       link.longURL == null ||
       link.shortURL == null ||
       link.longURL == '' ||
-      link.shortURL == ''
+      link.shortURL == '' ||
+      link.shortURL.length > 250
     ) {
       this.toastr.error(
-        'Please make sure to enter a Long Url, and Shortened Reference Url before generating.'
+        'Please make sure to enter a Long Url, and Shortened Reference Url before generating. The maximum length for short URLs are 250 Characters'
       );
+      this.btnEnabled = false;
     } else {
       this.URLService.CreateShortURL(link).subscribe({
         next: (res: any) => {
           this.toastr.success('Your URL has been created Successfully.');
           link.interactions = 0;
           this.linkOut.emit(link);
+          this.btnEnabled = false;
         },
         error: (error: any) => {
-          console.log(error);
-          this.toastr.error(error.error);
+          if (error.error == 'Short URL Already Exists') {
+            this.toastr.error(
+              'Whoops! Looks like this Short URL is already in use. Please try using another!'
+            );
+          } else {
+            this.toastr.error(
+              'Something went wrong while generating your URL. Please try again later.'
+            );
+          }
+          this.btnEnabled = false;
         },
       });
     }

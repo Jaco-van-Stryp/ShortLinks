@@ -8,7 +8,6 @@ import { URLService } from '../_services/url.service';
 })
 export class LinkPageComponent {
   Links: linkMod[] = [];
-
   constructor(private URLService: URLService) {}
 
   ngOnInit(): void {
@@ -30,5 +29,9 @@ export class LinkPageComponent {
   removeLink(removeLink: linkMod) {
     var index = this.Links.indexOf(removeLink);
     this.Links.splice(index);
+  }
+
+  trackLink(index: any, link: any) {
+    return link ? link.id : undefined; // Use a unique identifier for tracking
   }
 }

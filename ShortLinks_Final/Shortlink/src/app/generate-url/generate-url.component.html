@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-mb-6">
       <div class="card">
         <div class="card-header bg-primary text-white">Generate</div>
         <div class="card-body">
@@ -30,10 +30,14 @@
                 [(ngModel)]="Url.shortURL"
               />
             </div>
-            <button (click)="saveURL(Url)" class="btn btn-primary">
+            <button
+              [disabled]="btnEnabled"
+              (click)="saveURL(Url)"
+              class="btn btn-primary"
+            >
               Create Short URL
             </button>
-                 <button (click)="logout()" class="btn btn-danger ms-2">
+            <button (click)="logout()" class="btn btn-danger ms-2">
               Logout
             </button>
           </div>

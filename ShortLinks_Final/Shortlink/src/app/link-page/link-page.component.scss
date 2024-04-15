@@ -1,5 +1,38 @@
-h1,
-h2 {
-  text-align: center;
-  color: white;
+/* General Styles */
+.container-fluid {
+  color: #ccc; /* Light text color for readability on dark backgrounds */
+  background-color: #121212; /* Dark theme background */
+}
+
+.section-title {
+  color: #fff; /* White color for section titles */
+}
+
+hr {
+  border-top: 1px solid #444; /* Subtle separator */
+}
+
+/* Generate URL Section */
+.generate-url-section {
+  padding: 2rem; /* Padding for spacing */
+  background-color: #222; /* Slightly lighter than the body for contrast */
+  border-radius: 0.5rem; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* Existing URLs Section */
+.existing-urls-section {
+  padding: 1rem;
+  background-color: #222;
+  border-radius: 0.5rem;
+  margin-top: 2rem; /* Visual separation from the upper section */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 768px) {
+  .app-one-link {
+    width: 100%; /* Full width for smaller screens */
+    margin-bottom: 1rem; /* Increased margin for clarity */
+  }
 }

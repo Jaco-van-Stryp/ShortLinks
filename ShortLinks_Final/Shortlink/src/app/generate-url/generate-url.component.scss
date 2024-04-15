@@ -3,7 +3,6 @@
   max-height: 100vh; /* Full screen height */
   align-items: center; /* Centers the card vertically */
   justify-content: center; /* Centers the card horizontally */
-  text-align: center;
 }
 
 .login-box {
@@ -63,15 +62,4 @@
 
 .link-primary {
   text-decoration: none;
-}
-
-/* Adjustments for small screens */
-@media (max-width: 576px) {
-  .container {
-    padding: 0 20px; /* Padding to prevent touching the screen edges */
-  }
-
-  .card {
-    width: 100%; /* Full width card on smaller screens */
-  }
 }
