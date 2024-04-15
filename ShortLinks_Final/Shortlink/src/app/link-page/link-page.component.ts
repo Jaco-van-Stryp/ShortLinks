@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { linkMod } from '../_interfaces/linkMod';
 import { URLService } from '../_services/url.service';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../_interfaces/user';
+import { AccountService } from '../_services/account.service';
 @Component({
   selector: 'app-link-page',
   templateUrl: './link-page.component.html',
@@ -9,9 +11,15 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LinkPageComponent {
   Links: linkMod[] = [];
-  constructor(private URLService: URLService, private toastr: ToastrService) {}
+  User: User | any;
+  constructor(
+    private accountService: AccountService,
+    private URLService: URLService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
+    this.User = this.accountService.GetCurrentUser();
     this.loadURLS();
   }
 
