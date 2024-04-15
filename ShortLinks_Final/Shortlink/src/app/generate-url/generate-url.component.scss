@@ -1,0 +1,77 @@
+/* Container and General Styling */
+.container {
+  max-height: 100vh; /* Full screen height */
+  align-items: center; /* Centers the card vertically */
+  justify-content: center; /* Centers the card horizontally */
+  text-align: center;
+}
+
+.login-box {
+  padding-top: 20vh;
+}
+
+/* Card and Background */
+.card {
+  background-color: #222; /* Dark background for the card */
+  border: none; /* Removes default border */
+}
+
+.card-header {
+  background-color: #0056b3; /* Deep blue header to match the theme */
+}
+
+.form-label {
+  color: #ccc; /* Light grey color for readability */
+}
+::placeholder {
+  color: #ccc;
+  opacity: 1; /* Firefox */
+}
+
+/* Form Control Styling */
+.input-group-text {
+  background-color: #333; /* Darker background for input fields */
+  border: 1px solid #444; /* Slightly lighter border for definition */
+  color: #fff; /* White text color for contrast */
+}
+.form-control {
+  background-color: #333; /* Darker background for input fields */
+  border: 1px solid #444; /* Slightly lighter border for definition */
+  color: #fff; /* White text color for contrast */
+}
+
+.form-control:focus {
+  background-color: #444; /* Slightly lighter when focused */
+  border-color: #1e90ff; /* Bright blue border on focus */
+  box-shadow: 0 0 0 0.25rem rgba(30, 144, 255, 0.25); /* Subtle glow effect */
+}
+
+/* Button Styling */
+.btn-primary {
+  background-color: #0d6efd; /* Bright blue for primary buttons */
+  border: none; /* No border for a cleaner look */
+}
+
+.btn-primary:hover {
+  background-color: #1a75ff; /* Slightly lighter on hover */
+}
+
+/* Link Styling */
+.link-primary:hover {
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+.link-primary {
+  text-decoration: none;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 20px; /* Padding to prevent touching the screen edges */
+  }
+
+  .card {
+    width: 100%; /* Full width card on smaller screens */
+  }
+}
