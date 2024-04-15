@@ -24,7 +24,6 @@ export class LinkPageComponent {
   }
 
   addLink(newLink: linkMod) {
-    console.log(newLink);
     var L: linkMod = {
       longURL: newLink.longURL,
       shortURL: newLink.shortURL,

@@ -37,9 +37,14 @@ export class GenerateURLComponent {
           this.linkOut.emit(link);
         },
         error: (error: any) => {
-          if (error.error == 'Short URL Already Exists') {
+          console.log(error.error);
+          if (error.error === 'Short URL Already Exists') {
             this.toastr.error(
               'Whoops! Looks like this Short URL is already in use. Please try using another!'
+            );
+          } else if (error.error === 'Short Link Limit Reached') {
+            this.toastr.error(
+              'Whoops! Looks like you have reached your URL Limit, please either upgrade or delete existing URLs.'
             );
           } else {
             this.toastr.error(

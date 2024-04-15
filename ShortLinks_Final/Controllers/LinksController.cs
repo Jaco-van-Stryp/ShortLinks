@@ -26,8 +26,8 @@ namespace ShortLinks_Final.Controllers
         {
             var user = await _context.User.Include(l => l.Links).FirstOrDefaultAsync(x => x.Username == User.GetUsername());
             if (user == null) return Unauthorized("Please login with a valid user");
-            var existing = await _context.Links.FirstOrDefaultAsync(x => x.ShortURL == url.ShortURL);
-            if (existing != null) return StatusCode(409, "Short URL Already Exists");
+            if (user.Links.Count >= 5) return StatusCode(426, "Short Link Limit Reached");
+            if (user.Links.Exists(x => x.ShortURL == url.ShortURL) == true) return StatusCode(409, "Short URL Already Exists");
             Links link = new Links
             {
                 LongURL = url.LongURL,
