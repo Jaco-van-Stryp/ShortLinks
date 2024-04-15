@@ -2,6 +2,7 @@ import { URLService } from './../_services/url.service';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { linkMod } from '../_interfaces/linkMod';
 import { ToastrService } from 'ngx-toastr';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-one-link',
@@ -13,6 +14,11 @@ export class OneLinkComponent {
   @Output() DeletedLink = new EventEmitter<linkMod>();
 
   constructor(private urlService: URLService, private toastr: ToastrService) {}
+
+  ngOnInit(): void {
+    this.LinkData.shortURL =
+      'https://hubby.business/s/' + this.LinkData.shortURL;
+  }
 
   DeleteURL(Url: linkMod) {
     this.urlService.DeleteShortURL(Url.shortURL).subscribe({

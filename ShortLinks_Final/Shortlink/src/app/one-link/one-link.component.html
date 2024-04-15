@@ -1,23 +1,27 @@
-<div class="card mb-4 shadow-sm">
+<div class="card link-stats-card mb-4 shadow">
   <div class="card-body">
-    <h5 class="card-title">
+    <h6 class="card-title">
       Short URL:
+      <a href="{{ LinkData.shortURL }}" class="card-link">
+        {{ LinkData.shortURL | truncate }}
+      </a>
+    </h6>
+    <h6 class="card-subtitle mb-2">
+      Long URL:
       <a
-        href="https://hubby.business/s/{{ LinkData.shortURL }}"
-        class="card-link"
-        >https://hubby.business/s/{{ LinkData.shortURL }}</a
+        href="{{ LinkData.longURL }}"
+        class="card-link-muted"
+        title="{{ LinkData.longURL }}"
       >
-    </h5>
-    <h6 class="card-subtitle mb-2 text-muted">
-      Long URL: <a href="{{ LinkData.longURL }}">{{ LinkData.longURL }}</a>
+        {{ LinkData.longURL | truncate }}
+      </a>
     </h6>
     <p class="card-text">
-      <small class="text-muted"
-        >You've Redirected people {{ LinkData.interactions }} times so
-        far.</small
-      >
+      <small class="standout">
+        You've redirected people {{ LinkData.interactions }} times so far.
+      </small>
     </p>
-    <button class="btn btn-danger" (click)="DeleteURL(LinkData)">
+    <button class="btn btn-outline-danger" (click)="DeleteURL(LinkData)">
       Delete URL
     </button>
   </div>

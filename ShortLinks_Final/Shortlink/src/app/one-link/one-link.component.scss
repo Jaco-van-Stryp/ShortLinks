@@ -1,21 +1,69 @@
-.card {
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-}
-
-.card-title a {
-  color: #007bff; /* Bootstrap primary color */
-  text-decoration: none;
-}
-
-.card-title a:hover {
-  text-decoration: underline;
+/* Link Stats Card Styles */
+.link-stats-card {
+  background-color: #333; /* Dark background for the card */
+  color: #ccc; /* Light grey text for readability */
+  border: none; /* Removes default border */
+  border-radius: 0.5rem; /* Slightly rounded corners for a modern look */
 }
 
 .card-body {
-  padding: 1.25rem;
+  padding: 1rem; /* Comfortable padding around content */
 }
 
-.card-text {
-  margin-bottom: 0.5rem;
+.card-title,
+.card-subtitle {
+  color: #fff; /* White text for titles to stand out */
+}
+
+.card-link {
+  color: #1e90ff; /* Bright blue for links to stand out */
+  text-decoration: none; /* No underline */
+}
+
+.card-link:hover {
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+.card-link-muted {
+  color: #aaa; /* Muted color for less important links */
+}
+
+.btn-outline-danger {
+  border-color: #dc3545; /* Red border for the delete button */
+  color: #dc3545; /* Red text color to match border */
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545; /* Red background on hover */
+  color: #fff; /* White text on hover */
+}
+.standout {
+  color: white;
+}
+.shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Responsive Grid for Cards */
+@media (min-width: 992px) {
+  .link-stats-card {
+    width: calc(50% - 1rem); /* Four cards per row with spacing */
+    display: inline-block;
+    margin: 0.5rem; /* Margin for spacing between cards */
+  }
+}
+
+@media (max-width: 991px) {
+  .link-stats-card {
+    width: calc(50% - 1rem); /* Two cards per row on smaller screens */
+    display: inline-block;
+    margin: 0.5rem; /* Margin for spacing */
+  }
+}
+
+@media (max-width: 576px) {
+  .link-stats-card {
+    width: 100%; /* Full width for very small screens */
+    margin-bottom: 1rem; /* More margin on the bottom */
+  }
 }

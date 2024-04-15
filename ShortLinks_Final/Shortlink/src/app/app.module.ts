@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LinkPageComponent } from './link-page/link-page.component';
 import { OneLinkComponent } from './one-link/one-link.component';
 import { GenerateURLComponent } from './generate-url/generate-url.component';
+import { TruncatePipe } from './_pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GenerateURLComponent } from './generate-url/generate-url.component';
     LinkPageComponent,
     OneLinkComponent,
     GenerateURLComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
