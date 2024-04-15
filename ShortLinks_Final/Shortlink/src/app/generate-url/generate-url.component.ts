@@ -31,6 +31,11 @@ export class GenerateURLComponent {
         'Please make sure to enter a Long Url, and Shortened Reference Url before generating. The maximum length for short URLs are 250 Characters'
       );
     } else {
+      link.shortURL = link.shortURL.replaceAll(' ', '%20');
+      link.longURL = link.longURL.replaceAll(' ', '%20');
+      this.DataURL.longURL = '';
+      this.DataURL.shortURL = '';
+
       this.URLService.CreateShortURL(link).subscribe({
         next: (res: any) => {
           this.toastr.success('Your URL has been created Successfully.');

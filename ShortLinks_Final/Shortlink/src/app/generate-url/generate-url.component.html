@@ -12,6 +12,7 @@
                 class="form-control"
                 placeholder="Enter Long URL"
                 [(ngModel)]="DataURL.longURL"
+                onkeypress="return event.charCode != 32"
               />
             </div>
           </div>
@@ -28,6 +29,7 @@
                 class="form-control"
                 placeholder="Short URL Reference"
                 [(ngModel)]="DataURL.shortURL"
+                onkeypress="return event.charCode != 32"
               />
             </div>
             <button (click)="saveURL(DataURL)" class="btn btn-primary">
