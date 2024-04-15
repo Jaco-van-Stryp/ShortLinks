@@ -43,27 +43,3 @@
 .shadow {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
-
-/* Responsive Grid for Cards */
-@media (min-width: 992px) {
-  .link-stats-card {
-    width: calc(50% - 1rem); /* Four cards per row with spacing */
-    display: inline-block;
-    margin: 0.5rem; /* Margin for spacing between cards */
-  }
-}
-
-@media (max-width: 991px) {
-  .link-stats-card {
-    width: calc(50% - 1rem); /* Two cards per row on smaller screens */
-    display: inline-block;
-    margin: 0.5rem; /* Margin for spacing */
-  }
-}
-
-@media (max-width: 576px) {
-  .link-stats-card {
-    width: 100%; /* Full width for very small screens */
-    margin-bottom: 1rem; /* More margin on the bottom */
-  }
-}

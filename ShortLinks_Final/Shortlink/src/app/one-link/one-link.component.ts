@@ -12,12 +12,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OneLinkComponent {
   @Input() LinkData: linkMod = {} as linkMod;
   @Output() DeletedLink = new EventEmitter<linkMod>();
-
+  VisibleSL: string = '';
   constructor(private urlService: URLService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.LinkData.shortURL =
-      'https://hubby.business/s/' + this.LinkData.shortURL;
+    this.VisibleSL = 'https://hubby.business/s/' + this.LinkData.shortURL;
   }
 
   DeleteURL(Url: linkMod) {
