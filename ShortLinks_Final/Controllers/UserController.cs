@@ -42,6 +42,8 @@ namespace ShortLinks_Final.Controllers
             return Ok(new AccountDTO
             {
                 Username = user.Username,
+                Name = user.Name,
+                Surname = user.Surname,
                 Token = _tokenService.CreateToken(user)
             });
         }
@@ -50,13 +52,15 @@ namespace ShortLinks_Final.Controllers
         public async Task<ActionResult<AccountDTO>> Register(LoginDTO registerUser)
         {
             var userData = await _context.User.FirstOrDefaultAsync(x => x.Username == registerUser.Username);
-            if (userData != null) return Ok("User already Registerd");
+            if (userData != null) return Ok("User already Registered");
 
             var user = new User();
-          
+
             using var hmac = new HMACSHA512();
 
             user.Username = registerUser.Username.ToLower();
+            user.Name = registerUser.Name;
+            user.Surname = registerUser.Surname;
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerUser.Password));
             user.PasswordSalt = hmac.Key;
             await _context.User.AddAsync(user);
@@ -64,6 +68,8 @@ namespace ShortLinks_Final.Controllers
             return Ok(new AccountDTO
             {
                 Username = user.Username,
+                Surname = user.Surname,
+                Name = user.Name,
                 Token = _tokenService.CreateToken(user)
             });
         }

@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AccountService {
-  constructor(private HttpClient: HttpClient, private base: BaseService, private router: Router) {}
+  constructor(
+    private HttpClient: HttpClient,
+    private base: BaseService,
+    private router: Router
+  ) {}
 
   Login(account: Account) {
     return this.HttpClient.post<User>(
@@ -46,8 +50,8 @@ export class AccountService {
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl("Home");
-}
+    this.router.navigateByUrl('Home');
+  }
 
   GetCurrentUser() {
     const local = localStorage.getItem('user');
@@ -59,8 +63,6 @@ export class AccountService {
         console.error('Error parsing user data:', e);
         return null; // or throw an error, depending on your error handling strategy
       }
-    } else {
-      this.logout();
     }
     return null;
   }

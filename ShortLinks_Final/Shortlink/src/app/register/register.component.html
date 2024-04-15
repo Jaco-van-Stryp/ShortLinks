@@ -7,12 +7,32 @@
         </div>
         <div class="card-body">
           <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Enter your first name"
+              [(ngModel)]="User.Name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input
+              type="text"
+              id="surname"
+              class="form-control"
+              placeholder="Enter your surname"
+              [(ngModel)]="User.Surname"
+            />
+          </div>
+          <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input
               type="text"
               id="username"
               class="form-control"
-              placeholder="Enter username"
+              placeholder="Enter a username"
               [(ngModel)]="User.Username"
             />
           </div>
@@ -22,7 +42,7 @@
               type="password"
               id="password"
               class="form-control"
-              placeholder="Enter password"
+              placeholder="Enter a password"
               [(ngModel)]="User.Password"
             />
           </div>
