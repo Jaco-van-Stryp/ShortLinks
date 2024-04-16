@@ -18,7 +18,8 @@ export class OneLinkComponent {
   constructor(private urlService: URLService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.VisibleSL = 'https://hubby.business/s/' + this.LinkData.shortURL;
+    this.VisibleSL =
+      'https://shortlinks.hubby.business/s/' + this.LinkData.shortURL;
   }
 
   DeleteURL() {

@@ -6,5 +6,5 @@ import { Injectable } from '@angular/core';
 export class BaseService {
   constructor() {}
 
-  BaseURL: string = 'https://localhost:7299/api/';
+  BaseURL: string = 'https://shortlinks.hubby.business/api/';
 }
