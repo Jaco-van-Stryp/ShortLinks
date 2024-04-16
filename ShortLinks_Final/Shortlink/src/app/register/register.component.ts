@@ -19,6 +19,30 @@ export class RegisterComponent {
   ) {}
 
   Register(User: Account) {
+    //validation:
+
+    if (
+      User.Username == null ||
+      User.Password == null ||
+      User.Name == null ||
+      User.Surname == null ||
+      User.Name == '' ||
+      User.Surname == '' ||
+      User.Username == '' ||
+      User.Password == ''
+    ) {
+      this.Toastr.error(
+        'Please make sure you enter all required fields when registering an account.'
+      );
+      return;
+    }
+    if (User.Password.length < 8 || User.Password.length > 100) {
+      this.Toastr.error(
+        'Your password should be a minimum of 8 characters and no more than 100 characters.'
+      );
+      return;
+    }
+
     this.AccountService.Register(User).subscribe({
       next: (res: any) => {
         this.Toastr.success('Registration Successful');

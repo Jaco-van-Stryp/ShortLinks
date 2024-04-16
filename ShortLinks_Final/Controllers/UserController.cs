@@ -51,6 +51,7 @@ namespace ShortLinks_Final.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<AccountDTO>> Register(LoginDTO registerUser)
         {
+            if (registerUser.Name == null || registerUser.Password == null || registerUser.Surname == null || registerUser.Username == null || registerUser.Name == "" || registerUser.Username == "" || registerUser.Password == "" || registerUser.Surname == "" || registerUser.Password.Length < 8 || registerUser.Password.Length > 100) return StatusCode(403, "Please Complete All Fields");
             var userData = await _context.User.FirstOrDefaultAsync(x => x.Username == registerUser.Username);
             if (userData != null) return Ok("User already Registered");
 
