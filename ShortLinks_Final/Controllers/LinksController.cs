@@ -24,6 +24,7 @@ namespace ShortLinks_Final.Controllers
         [HttpPost("CreateShortURL")]
         public async Task<ActionResult> CreateShortURL(URLDTO url)
         {
+            if (url.LongURL == null || url.ShortURL == null || url.LongURL == "" || url.ShortURL == "") return BadRequest("URL Not Allowed");
             var user = await _context.User.Include(l => l.Links).FirstOrDefaultAsync(x => x.Username == User.GetUsername());
             if (user == null) return Unauthorized("Please login with a valid user");
             if (user.Links.Count >= 5) return StatusCode(426, "Short Link Limit Reached");

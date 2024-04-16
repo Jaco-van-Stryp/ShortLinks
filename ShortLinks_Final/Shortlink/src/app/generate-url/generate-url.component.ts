@@ -33,13 +33,14 @@ export class GenerateURLComponent {
     } else {
       link.shortURL = link.shortURL.replaceAll(' ', '%20');
       link.longURL = link.longURL.replaceAll(' ', '%20');
-      this.DataURL.longURL = '';
-      this.DataURL.shortURL = '';
 
+      console.log(link);
       this.URLService.CreateShortURL(link).subscribe({
         next: (res: any) => {
           this.toastr.success('Your URL has been created Successfully.');
           this.linkOut.emit(link);
+          this.DataURL.longURL = '';
+          this.DataURL.shortURL = '';
         },
         error: (error: any) => {
           console.log(error.error);
