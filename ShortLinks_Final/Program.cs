@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSqlServer<DataContext>(builder.Configuration.GetConnectionString("DefaultConnectionString"));
+builder.Services.AddNpgsql<DataContext>(builder.Configuration.GetConnectionString("DefaultConnectionString"));
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddControllersWithViews();
@@ -25,21 +25,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://shortlinks.hubby.business"));
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers(); // Map API controllers
-    endpoints.MapFallbackToFile("index.html"); // Fallback to Angular index.html for unknown routes
-});
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapFallbackToController("Index", "Fallback");
 
 app.Run();
